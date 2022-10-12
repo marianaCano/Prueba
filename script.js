@@ -1,13 +1,13 @@
 
 const CLAVE_LOCALSTORAGE = "lista_tareas";
 document.addEventListener("DOMContentLoaded", () => {
-	let tareas = []; // El arreglo global que vamos a manejar
-	// Declaración de elementos del DOM
+	let tareas = []; // El arreglo global 
+	
 	const $contenedorTareas = document.querySelector("#contenedorTareas"),
 		$btnGuardarTarea = document.querySelector("#btnAgregarTarea"),
 		$inputNuevaTarea = document.querySelector("#inputNuevaTarea");
 
-	// Escuchar clic del botón para agregar nueva tarea
+	// clic del botón para agregar nueva tarea
 	$btnGuardarTarea.onclick = () => {
 		const tarea = $inputNuevaTarea.value;
 		if (!tarea) {
@@ -35,11 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		localStorage.setItem(CLAVE_LOCALSTORAGE, JSON.stringify(tareas));
 	};
 
-	// Definir función que refresca la lista de tareas a partir del arreglo global
 	const refrescarListaDeTareas = () => {
 		$contenedorTareas.innerHTML = "";
 		for (const [indice, tarea] of tareas.entries()) {
-			// Crear el enlace para eliminar la tarea
+			//eliminar la tarea
 			const $enlaceParaEliminar = document.createElement("a");
 			$enlaceParaEliminar.classList.add("enlace-eliminar");
 			$enlaceParaEliminar.innerHTML = "&times;";
@@ -54,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 				guardarTareasEnAlmacenamiento(tareas);
 				refrescarListaDeTareas();
 			};
-			// El input para marcar la tarea como terminada
+			// tarea como terminada
 			const $checkbox = document.createElement("input");
 			$checkbox.type = "checkbox";
-			$checkbox.onchange = function () { // No es una función flecha porque quiero acceder al elemento a través de this
+			$checkbox.onchange = function () { 
 				if (this.checked) {
 					tareas[indice].terminada = true;
 				} else {
@@ -67,10 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				refrescarListaDeTareas();
 			}
 
-			// El span que llevará el contenido de la tarea
 			const $span = document.createElement("span");
 			$span.textContent = tarea.tarea;
-			// Y finalmente el elemento de la lista
 			const $li = document.createElement("li");
 			// Verificamos si la tarea está marcada para marcar los elementos
 			if (tarea.terminada) {
