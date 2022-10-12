@@ -1,3 +1,4 @@
+//funcion de registo
 function singUp(e){
     event.preventDefault();
 
@@ -13,16 +14,18 @@ function singUp(e){
     localStorage.setItem(username, json)
     console.log ("registrado")
 }
-
+//funcion de inicio
 function loginFunc(e){
     event.preventDefault();
     
     var username = document.getElementById("usuario").value;
     var pass = document.getElementById("contraseña").value;
     var result = document.getElementById("result");
+
     var user = localStorage.getItem(username);
     var data = JSON.parse(user);
     console.log(data);
+    window.location.href="index.html"
 
- 
+   
 }
