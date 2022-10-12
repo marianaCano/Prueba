@@ -9,16 +9,17 @@
 </head>
 <body>
         <section class="form-login">
-            <h5>Formulario Login</h5>
-            <input class="controls" type="text" name="usuario" value="" placeholder="Correo">
-            <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
-            <input class="buttons" type="submit" name="" value="Ingresar">
-            <input class="buttons" type="submit" name="" value="Registro">
+            <form onsubmit="singUp()">
+                <h5>Registro</h5>
+                <input  id="usuario"for="username"class="controls" type="text" name="usuario" value="" placeholder="usuario">
+                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <button id="contraseña"for="password"class="buttons"type="submit">Regristrar</button>
+                <a href="inicio.html"><input class="buttons" type="button" value="Inciar sesión"></a>
+            </form>
+
         </section>
  
- 
-
-      <script src="main.js"></script>
+      <script src="app.js"></script>
 </body>
 
 </html>
