@@ -18,7 +18,7 @@ function loginFunc(e){
     event.preventDefault();
     
     var username = document.getElementById("usuario").value;
-    var pass = document.getElementById("Contraseña").value;
+    var pass = document.getElementById("contraseña").value;
     var result = document.getElementById("result").value;
     var user = localStorage.getItem(username);
     var data = JSON.parse(user);
