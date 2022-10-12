@@ -6,12 +6,11 @@
 
 body {
   font-family: arial;
-  background-image: url('bg.png');
 }
 
 .form-login {
   width: 400px;
-  height: 420px;
+  height: 340px;
   background: #f7ceee;
   margin: auto;
   margin-top: 180px;
