@@ -47,6 +47,10 @@ body {
   color: black;
   margin-bottom: 16px;
 }
+.buttons:hover{
+  opacity: 0.7;
+  text-decoration: none;
+}
 
 .form-login p{
   height: 40px;
