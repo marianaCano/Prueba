@@ -53,6 +53,7 @@ h5 {
    margin-top: 20px;
    margin-left: 100px;
    margin-right: 100px;
+  
    
 }
 
@@ -63,31 +64,38 @@ h5 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: rgb(6, 99, 212);
+    background-color: #d38491;
     color: #fff;
     max-height: 110px;
+    border-radius: 7px;
+ 
 }
 
 .contenedor .formulario input[type="text"] {
     border: none;
     padding: 8px;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .contenedor .formulario input[type="text"]:focus {
     outline: none;
-    border-bottom: 5px solid rgb(15, 31, 55);
-    ;
+    border-bottom: 5px solid #c55668;
+    justify-content: center;
 }
 
 .contenedor .formulario input[type="submit"] {
     border: none;
     padding: 10px;
-    background-color: rgb(9, 34, 69);
+    background-color: #c55668;
     color: #fff;
     cursor: pointer;
+    border-radius: 20px;
+
 }
-
-
+.contenedor.formulario input[input="submit"]:hover{
+   opacity: 0.5;
+}
 
 
 /* TAREAS */
@@ -101,7 +109,7 @@ h5 {
 .contenedor .item-tarea {
     display: flex;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: #fae3f0;
     padding: 10px;
     margin: 10px 2px;
     border-radius: 10px;
@@ -144,11 +152,3 @@ h5 {
         margin: 15px;
     }
 }
-
-.check {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-  }
