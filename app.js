@@ -13,6 +13,7 @@ function singUp(e){
     var json = JSON.stringify(user);
     localStorage.setItem(username, json)
     console.log ("registrado")
+    alert("Se registró el usuario, ahora inicia sesión")
 }
 //funcion de inicio
 function loginFunc(e){
@@ -25,7 +26,14 @@ function loginFunc(e){
     var user = localStorage.getItem(username);
     var data = JSON.parse(user);
     console.log(data);
-    window.location.href="index.html"
 
+   if(user == null){
+      result.innerHTML= "error, escriba un user valido";
+
+   } else if  (username == data.usuario && pass == data.contraseña) {
+     window.location.href="index.html";
+   }else {
+     result.innerHTML= "error";
+   }
    
 }
