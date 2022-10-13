@@ -62,7 +62,7 @@ function agregarHTML() {
 
     } else {
         const mensaje = document.createElement("h5");
-        mensaje.textContent = "~SIN TAREAS~"
+        mensaje.textContent = "No hay tareas"
         tareas.appendChild(mensaje)
     }
 

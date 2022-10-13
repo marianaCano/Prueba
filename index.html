@@ -5,40 +5,39 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lista de tareas </title>
 	<link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
 	<h1>To Do List</h1>
 
-    <div class="datos">
-        <p id="total">Total de tareas: 0</p>
-        <p id="completadas">Tareas Completadas: 0</p>
-    </div>
+	<div class="datos">
+		<p id="total">Total de tareas: 0</p>
+		<p id="completadas">Tareas Completadas: 0</p>
+	</div>
 
-    <div class="contenedor">
+	<div class="contenedor">
 
-        <form class="formulario" id="formulario">
-            <h4>Agregar nueva tarea</h4>
-            <input type="text" id="tarea">
-            <input type="submit" value="Añadir">
-        </form>
+		<div class="tareas" id="tareas">
 
-        <div class="tareas" id="tareas">
+			<div class="item-tarea">
+				<p>Tarea 1</p>
+				<div class="botones">
+					<button class="eliminar" data-id="${item.id}">x</button>
+					<button class="completada" data-id="${item.id}"></button>
+				</div>
+			</div>
+			<!-- <h5>Sin tareas</h5> -->
 
-            <div class="item-tarea">
-                <p>Tarea 1</p>
-                <div class="botones">
-                    <button class="eliminar" data-id="${item.id}">x</button>
-                    <button class="completada" data-id="${item.id}">?</button>
-                </div>
-            </div>
-            <!-- <h5>Sin tareas</h5> -->
+		</div>
 
-        </div>
+		<form class="formulario" id="formulario">
+			<h4>Agregar nueva tarea</h4>
+			<input type="text" id="tarea">
+			<input type="submit" value="Añadir">
+		</form>
 
-    </div>
+	</div>
 	
 </body>
 <script src="script.js"></script>

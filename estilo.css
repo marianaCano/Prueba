@@ -15,8 +15,8 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     padding: 10px;
-    background-color: rgb(12, 42, 66);
-    color: aliceblue;
+    background-color: #c55668;
+    color: white;
 }
 
 h5 {
@@ -27,12 +27,12 @@ h5 {
 
 .completa {
     text-decoration: line-through;
-    color: rgb(30, 139, 255);
+    color: rgb(255, 0, 0);
 }
 
 /* DATOS */
 .datos {
-    background-color: rgb(12, 42, 66);
+    background-color:#c55668;
     display: flex;
     justify-content: center;
     padding: 15px;
@@ -40,8 +40,8 @@ h5 {
 }
 
 .datos p {
-    background-color: rgb(20, 32, 47);
-    color: aliceblue;
+    background-color: #d17f8c;
+    color: white;
     padding: 6px 10px;
     border-radius: 5px;
 }
@@ -49,9 +49,11 @@ h5 {
 
 /* CONTENEDOR */
 .contenedor {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 15px;
+   display: grid;
+   margin-top: 20px;
+   margin-left: 100px;
+   margin-right: 100px;
+   
 }
 
 .contenedor .formulario {
@@ -92,7 +94,8 @@ h5 {
 .contenedor .tareas {
     padding: 10px;
     margin: 10px;
-    background-color: rgb(215, 236, 250);
+    background-color: #d17f8c;
+    border-radius: 7px;
 }
 
 .contenedor .item-tarea {
@@ -101,11 +104,12 @@ h5 {
     background-color: #ffffff;
     padding: 10px;
     margin: 10px 2px;
+    border-radius: 10px;
 }
 
 .eliminar {
     border: none;
-    background-color: rgb(255, 0, 89);
+    background-color: rgb(255, 0, 0);
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
@@ -119,12 +123,13 @@ h5 {
 
 .completada {
     border: none;
-    background-color: rgb(0, 136, 255);
+    background-color: rgb(9, 255, 0);
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
     transition: transform ease 300ms;
     padding: 8px;
+    background-image: "check.png";
 }
 
 .completada:hover {
@@ -139,3 +144,11 @@ h5 {
         margin: 15px;
     }
 }
+
+.check {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
