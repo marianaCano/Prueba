@@ -29,7 +29,6 @@ function validarFormulario(e) {
     //agregamos al array 
     task = [...task, objTarea];
     formulario.reset();
-
     //agregamos al HTML
     agregarHTML();
 
