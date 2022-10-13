@@ -1,86 +1,108 @@
+const formulario = document.querySelector("#formulario");
+const tareas = document.querySelector("#tareas");
+const total = document.querySelector("#total");
+const completadas = document.querySelector("#completadas");
+let task = [];
 
-const CLAVE_LOCALSTORAGE = "lista_tareas";
-document.addEventListener("DOMContentLoaded", () => {
-	let tareas = []; // El arreglo global 
-	
-	const $contenedorTareas = document.querySelector("#contenedorTareas"),
-		$btnGuardarTarea = document.querySelector("#btnAgregarTarea"),
-		$inputNuevaTarea = document.querySelector("#inputNuevaTarea");
+(() => {
+    formulario.addEventListener('submit', validarFormulario);
+    tareas.addEventListener("click", eliminarTarea);
+    tareas.addEventListener("click", completarTarea);
+    document.addEventListener("DOMContentLoaded", () => {
+        let datosLS = JSON.parse(localStorage.getItem("tareas")) || [];
+        task = datosLS;
+        agregarHTML();
+    })
+})()
 
-	// clic del botón para agregar nueva tarea
-	$btnGuardarTarea.onclick = () => {
-		const tarea = $inputNuevaTarea.value;
-		if (!tarea) {
-			return;
-		}
-		tareas.push({
-			tarea: tarea,
-			terminada: false,
-		});
-		$inputNuevaTarea.value = "";
-		guardarTareasEnAlmacenamiento();
-		refrescarListaDeTareas();
-	};
+function validarFormulario(e) {
+    e.preventDefault();
 
-	const obtenerTareasDeAlmacenamiento = () => {
-		const posibleLista = JSON.parse(localStorage.getItem(CLAVE_LOCALSTORAGE));
-		if (posibleLista) {
-			return posibleLista;
-		} else {
-			return [];
-		}
-	};
+    const tarea = document.querySelector("#tarea").value;
+    if (tarea.trim().length === 0) {
+        console.log('vacio');
+        return
+    }
 
-	const guardarTareasEnAlmacenamiento = () => {
-		localStorage.setItem(CLAVE_LOCALSTORAGE, JSON.stringify(tareas));
-	};
+    //creamos el objeto tarea
+    const objTarea = { id: Date.now(), tarea: tarea, estado: false };
+    //agregamos al array 
+    task = [...task, objTarea];
+    formulario.reset();
 
-	const refrescarListaDeTareas = () => {
-		$contenedorTareas.innerHTML = "";
-		for (const [indice, tarea] of tareas.entries()) {
-			//eliminar la tarea
-			const $enlaceParaEliminar = document.createElement("a");
-			$enlaceParaEliminar.classList.add("enlace-eliminar");
-			$enlaceParaEliminar.innerHTML = "&times;";
-			$enlaceParaEliminar.href = "";
-			$enlaceParaEliminar.onclick = (evento) => {
-				evento.preventDefault();
-				if (!confirm("¿Eliminar tarea?")) {
-					return;
-				}
-				tareas.splice(indice, 1);
-				// Guardar los cambios
-				guardarTareasEnAlmacenamiento(tareas);
-				refrescarListaDeTareas();
-			};
-			// tarea como terminada
-			const $checkbox = document.createElement("input");
-			$checkbox.type = "checkbox";
-			$checkbox.onchange = function () { 
-				if (this.checked) {
-					tareas[indice].terminada = true;
-				} else {
-					tareas[indice].terminada = false;
-				}
-				guardarTareasEnAlmacenamiento(tareas);
-				refrescarListaDeTareas();
-			}
+    //agregamos al HTML
+    agregarHTML();
 
-			const $span = document.createElement("span");
-			$span.textContent = tarea.tarea;
-			const $li = document.createElement("li");
-			// Verificamos si la tarea está marcada para marcar los elementos
-			if (tarea.terminada) {
-				$checkbox.checked = true;
-				$span.classList.add("tachado");
-			}
-			$li.appendChild($checkbox);
-			$li.appendChild($span);
-			$li.appendChild($enlaceParaEliminar);
-			$contenedorTareas.appendChild($li);
-		}
-	};
-	// Llamar a la función la primera vez
-	tareas = obtenerTareasDeAlmacenamiento();
-	refrescarListaDeTareas();
-});
+}
+
+
+function agregarHTML() {
+
+    while (tareas.firstChild) {
+        tareas.removeChild(tareas.firstChild)
+    }
+
+    if (task.length > 0) {
+        task.forEach(item => {
+            const elemento = document.createElement('div');
+            elemento.classList.add('item-tarea');
+            elemento.innerHTML = `
+                <p>${item.estado ? (
+                    `<span class='completa'>${item.tarea}</span>`
+                ) : (
+                    `<span>${item.tarea}</span>`
+                )}</p>
+                <div class="botones">
+                    <button class="eliminar" data-id="${item.id}">x</button>
+                    <button class="completada" data-id="${item.id}">?</button>
+                </div>
+            `
+            tareas.appendChild(elemento)
+        });
+
+    } else {
+        const mensaje = document.createElement("h5");
+        mensaje.textContent = "~SIN TAREAS~"
+        tareas.appendChild(mensaje)
+    }
+
+    let totalTareas = task.length;
+    let tareasCompletas = task.filter(item => item.estado === true).length;
+
+    total.textContent = `Total tareas: ${totalTareas}`;
+    completadas.textContent = `Tareas Completadas: ${tareasCompletas}`;
+
+    //localStorage
+    localStorage.setItem("tareas", JSON.stringify(task))
+
+}
+
+function eliminarTarea(e) {
+    if (e.target.classList.contains("eliminar")) {
+        const tareaID = Number(e.target.getAttribute("data-id"));
+
+        const nuevasTareas = task.filter((item) => item.id !== tareaID);
+        task = nuevasTareas;
+        agregarHTML();
+    }
+}
+
+
+//completar tarea
+function completarTarea(e) {
+    if (e.target.classList.contains("completada")) {
+        const tareaID = Number(e.target.getAttribute("data-id"));
+        const nuevasTareas = task.map(item => {
+            if (item.id === tareaID) {
+                item.estado = !item.estado;
+                return item;
+            } else {
+                return item
+            }
+        })
+
+        //modicar arreglo
+        task = nuevasTareas;
+        agregarHTML();
+    }
+}
