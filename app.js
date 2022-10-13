@@ -13,7 +13,14 @@ function singUp(e){
     var json = JSON.stringify(user);
     localStorage.setItem(username, json)
     console.log ("registrado")
-    alert("Se registró el usuario, ahora inicia sesión")
+    
+    if(username == null){
+       alert("ingrse un usuario")
+
+     }else {
+        alert("Se registró el usuario, ahora inicia sesión")
+     }
+    
 }
 //funcion de inicio
 function loginFunc(e){
