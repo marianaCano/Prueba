@@ -11,8 +11,8 @@
     <section class="form-login">
         <form onsubmit="loginFunc()">
             <h5>Login</h5>
-            <input  id="usuario" for="username"class="controls" type="text" name="usuario" value="" placeholder="usuario">
-            <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+            <input  id="usuario" for="username"class="controls" type="text" name="usuario" value="" placeholder="usuario"required minlength="1" >
+            <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña"required minlength="1" >
             <button id="contraseña" for="password"class="buttons"type="submit">Login</button>
             <a href="autenticacion.html"><input class="buttons" type="button" value="Registrarse"></a>
         </form>

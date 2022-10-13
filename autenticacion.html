@@ -11,8 +11,8 @@
         <section class="form-login">
             <form onsubmit="singUp()">
                 <h5>Registro</h5>
-                <input  id="usuario"for="username"class="controls" type="text" name="usuario" value="" placeholder="usuario">
-                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <input  id="usuario"for="username"class="controls" type="text" name="usuario" value="" placeholder="usuario"required minlength="1" >
+                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña" required minlength="1" >
                 <button id="contraseña"for="password"class="buttons"type="submit">Regristrar</button>
                 <a href="inicio.html"><input class="buttons" type="button" value="Inciar sesión"></a>
             </form>
