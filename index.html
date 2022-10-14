@@ -17,16 +17,14 @@
 	</div>
 
 	<div class="contenedor">
-
+		<div class="select">
+            <select name="todos" class="filter_todo" onchange="filterTodo()">
+                <option value="all">Todo</option>
+                <option value="completed">Completado</option>
+                <option value="uncompleted">Incompleto</option>
+            </select>
+        </div>
 		<div class="tareas" id="tareas">
-
-			<div class="item-tarea">
-				<p>Tarea 1</p>
-				<div class="botones">
-					<button class="eliminar" data-id="${item.id}">x</button>
-					<button class="completada" data-id="${item.id}"></button>
-				</div>
-			</div>
 
 		</div>
 
